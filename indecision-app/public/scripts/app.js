@@ -57,7 +57,7 @@ var templateTwo = React.createElement(
     React.createElement(
         "h1",
         null,
-        user.name.toUpperCase()
+        user.name ? user.name.toUpperCase() : "Anonymous"
     ),
     React.createElement(
         "p",
