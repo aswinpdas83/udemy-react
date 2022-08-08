@@ -7,9 +7,32 @@ console.log("App.Js is Running!");
 // }
 
 var template = React.createElement(
-  "h1",
-  null,
-  "Does this change "
+    "div",
+    null,
+    React.createElement(
+        "h1",
+        null,
+        "Does this change "
+    ),
+    React.createElement(
+        "p",
+        null,
+        "this is a info"
+    ),
+    React.createElement(
+        "ol",
+        null,
+        React.createElement(
+            "li",
+            null,
+            "item one"
+        ),
+        React.createElement(
+            "li",
+            null,
+            "item two"
+        )
+    )
 );
 
 var appRoot = document.getElementById("app");
