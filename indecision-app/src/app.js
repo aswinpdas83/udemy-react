@@ -19,21 +19,25 @@ var template = (
 var user = {
     name: "Aswin P Das",
     age: 21,
-    location: "Kochi, Ernakulam, Kerala"
+    location: "Kochi, Ernakulam"
 
 }
 // var userName = 'Aswin P Das'
 // var userAge = 20
 // var userLocation = "Kochi, Ernakulam"
+function getLocation(location) {
+    if (location)
+        return <p>Location: {location}</p>
+}
 var templateTwo = (
     <div>
         <h1>{user.name.toUpperCase()}</h1>
         <p>Age: {user.age}</p>
-        <p> Location: {user.location}</p>
+        {getLocation(user.location)}
 
     </div>
 )
 //create an another template var JSX expression as templateTwo
 
 var appRoot = document.getElementById("app");
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);
