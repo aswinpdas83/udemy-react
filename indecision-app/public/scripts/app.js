@@ -6,7 +6,8 @@ console.log("App.Js is Running!");
 
 var book = {
     title: "Wings of fire",
-    subTitle: "Wings of Fire (1999), is the autobiography of the Missile Man of India and President of India, Dr. A. P. J. Abdul Kalam."
+    subTitle: "Wings of Fire (1999), is the autobiography of the Missile Man of India and President of India, Dr. A. P. J. Abdul Kalam.",
+    options: ["one", "two"]
 };
 var template = React.createElement(
     "div",
@@ -16,10 +17,15 @@ var template = React.createElement(
         null,
         book.title
     ),
-    React.createElement(
+    book.subTitle && React.createElement(
         "p",
         null,
         book.subTitle
+    ),
+    React.createElement(
+        "p",
+        null,
+        book.options.length > 0 ? 'Here is your options' : 'No options'
     ),
     React.createElement(
         "ol",
@@ -38,7 +44,7 @@ var template = React.createElement(
 );
 var user = {
     name: "Aswin P Das",
-    age: 21,
+    age: 18,
     location: "Kochi, Ernakulam"
     // var userName = 'Aswin P Das'
     // var userAge = 20
@@ -59,7 +65,7 @@ var templateTwo = React.createElement(
         null,
         user.name ? user.name.toUpperCase() : "Anonymous"
     ),
-    React.createElement(
+    user.age >= 18 && React.createElement(
         "p",
         null,
         "Age: ",
@@ -70,4 +76,4 @@ var templateTwo = React.createElement(
 //create an another template var JSX expression as templateTwo
 
 var appRoot = document.getElementById("app");
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
