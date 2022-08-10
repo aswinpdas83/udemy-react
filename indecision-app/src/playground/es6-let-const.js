@@ -37,5 +37,5 @@ const wordsUpper = words.map(word => word.toUpperCase());
 // const filtered = words.filter(filterPredicate);
 console.log(wordsUpper);
 
-const getFirstName = (x) => x.split(" ")[0];
+const getFirstName = (fullName) => fullName.split(" ")[0];
 console.log("First name  Aswin P Das is : ", getFirstName("Aswin P Das"))
