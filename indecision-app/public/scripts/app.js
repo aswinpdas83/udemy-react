@@ -6,8 +6,8 @@ var user = {
     printPlacedLived: function printPlacedLived() {
         var _this = this;
 
-        this.location.forEach(function (city) {
-            console.log(_this.name, "has lived in", city);
+        this.location.map(function (city) {
+            return console.log(_this.name, "has lived in", city);
         });
     }
 };
