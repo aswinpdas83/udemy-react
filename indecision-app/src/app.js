@@ -21,7 +21,7 @@ var template = (
 var user = {
     name: "Aswin P Das",
     age: 18,
-    location: "Kochi, Ernakulam"
+    location: "Kochi, Ernakulam, Kerala"
 
 }
 // var userName = 'Aswin P Das'
@@ -31,15 +31,15 @@ function getLocation(location) {
     if (location)
         return <p>Location: {location}</p>
 }
-var templateTwo = (
-    <div>
-        <h1>{user.name ? user.name.toUpperCase() : "Anonymous"}</h1>
-        {user.age >= 18 && <p>Age: {user.age}</p>}
-        {getLocation(user.location)}
+// var templateTwo = (
+//     <div>
+//         <h1>{user.name ? user.name.toUpperCase() : "Anonymous"}</h1>
+//         {user.age >= 18 && <p>Age: {user.age}</p>}
+//         {getLocation(user.location)}
 
-    </div>
-)
+//     </div>
+// )
 //create an another template var JSX expression as templateTwo
-
-var appRoot = document.getElementById("app");
+const appRoot = document.getElementById("app");
 ReactDOM.render(template, appRoot);
+

@@ -45,7 +45,7 @@ var template = React.createElement(
 var user = {
     name: "Aswin P Das",
     age: 18,
-    location: "Kochi, Ernakulam"
+    location: "Kochi, Ernakulam, Kerala"
     // var userName = 'Aswin P Das'
     // var userAge = 20
     // var userLocation = "Kochi, Ernakulam"
@@ -57,23 +57,14 @@ var user = {
         location
     );
 }
-var templateTwo = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
-        null,
-        user.name ? user.name.toUpperCase() : "Anonymous"
-    ),
-    user.age >= 18 && React.createElement(
-        "p",
-        null,
-        "Age: ",
-        user.age
-    ),
-    getLocation(user.location)
-);
-//create an another template var JSX expression as templateTwo
+// var templateTwo = (
+//     <div>
+//         <h1>{user.name ? user.name.toUpperCase() : "Anonymous"}</h1>
+//         {user.age >= 18 && <p>Age: {user.age}</p>}
+//         {getLocation(user.location)}
 
+//     </div>
+// )
+//create an another template var JSX expression as templateTwo
 var appRoot = document.getElementById("app");
 ReactDOM.render(template, appRoot);
