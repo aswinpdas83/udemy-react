@@ -16,4 +16,23 @@ if (fullName) {
     var firstName = fullName.split(" ")[0]; // let and const will not allow to print the value out side the scope.
     console.log("First name: ", firstName);
 }
-console.log("First name out side the if scope: ", firstName);
+console.log("First name out side the if scope:", firstName);
+
+const getSqur = (x) => x ** 2
+
+console.log("\n Answer is : ", getSqur(4))
+
+
+const words = ['apple', 'ball', 'cat', 'duck'];
+// function upperConvert(word) {
+//     return word.toUpperCase();
+// }
+
+// const arrowConvert = (word) => word.toUpperCase();
+
+
+const wordsUpper = words.map(word => word.toUpperCase());
+
+// const filterPredicate = (word) => word.includes('a');
+// const filtered = words.filter(filterPredicate);
+console.log(wordsUpper);
