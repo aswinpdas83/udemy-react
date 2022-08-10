@@ -41,3 +41,8 @@ var wordsUpper = words.map(function (word) {
 // const filterPredicate = (word) => word.includes('a');
 // const filtered = words.filter(filterPredicate);
 console.log(wordsUpper);
+
+var getFirstName = function getFirstName(x) {
+    return x.split(" ")[0];
+};
+console.log("First name  Aswin P Das is : ", getFirstName("Aswin P Das"));
