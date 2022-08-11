@@ -20,12 +20,17 @@ var IndecisionApp = function (_React$Component) {
     _createClass(IndecisionApp, [{
         key: 'render',
         value: function render() {
+            var app = {
+                title: 'Indecision App!',
+                subtitle: 'Welcome to the world of React JS.',
+                options: ['option one', 'option two', 'option three']
+            };
             return React.createElement(
                 'div',
                 null,
-                React.createElement(Header, null),
+                React.createElement(Header, { headervalues: app }),
                 React.createElement(Action, null),
-                React.createElement(Options, null),
+                React.createElement(Options, { option: app.options }),
                 React.createElement(AddOptions, null)
             );
         }
@@ -52,12 +57,12 @@ var Header = function (_React$Component2) {
                 React.createElement(
                     'h1',
                     null,
-                    'Indecision'
+                    this.props.headervalues.title
                 ),
                 React.createElement(
                     'h2',
                     null,
-                    'Welcome to React JS'
+                    this.props.headervalues.subtitle
                 )
             );
         }
@@ -76,6 +81,11 @@ var Action = function (_React$Component3) {
     }
 
     _createClass(Action, [{
+        key: 'handlePick',
+        value: function handlePick() {
+            alert("Handle Pick alert");
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
@@ -83,7 +93,7 @@ var Action = function (_React$Component3) {
                 null,
                 React.createElement(
                     'button',
-                    null,
+                    { onClick: this.handlePick },
                     ' What Should i do?'
                 )
             );
@@ -113,7 +123,7 @@ var Options = function (_React$Component4) {
                     null,
                     'Your options here.'
                 ),
-                React.createElement(Option, null)
+                React.createElement(Option, { option: this.props.option })
             );
         }
     }]);
@@ -131,34 +141,31 @@ var Option = function (_React$Component5) {
     }
 
     _createClass(Option, [{
+        key: 'handleRemoveAll',
+        value: function handleRemoveAll() {
+            alert('Handle Remove all');
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
                 'div',
                 null,
                 React.createElement(
+                    'button',
+                    { onClick: this.handleRemoveAll },
+                    'Remove all'
+                ),
+                React.createElement(
                     'ol',
                     null,
-                    React.createElement(
-                        'li',
-                        null,
-                        'one'
-                    ),
-                    React.createElement(
-                        'li',
-                        null,
-                        'two'
-                    ),
-                    React.createElement(
-                        'li',
-                        null,
-                        'three'
-                    ),
-                    React.createElement(
-                        'li',
-                        null,
-                        'four'
-                    )
+                    this.props.option.map(function (value, index) {
+                        return React.createElement(
+                            'li',
+                            { key: index },
+                            value
+                        );
+                    })
                 )
             );
         }

@@ -1,11 +1,16 @@
 
 class IndecisionApp extends React.Component {
     render() {
+        let app = {
+            title: 'Indecision App!',
+            subtitle: 'Welcome to the world of React JS.',
+            options: ['option one', 'option two', 'option three']
+        }
         return (
             <div>
-                <Header />
+                <Header headervalues={app} />
                 <Action />
-                <Options />
+                <Options option={app.options} />
                 <AddOptions />
             </div>
         );
@@ -16,18 +21,21 @@ class Header extends React.Component {
     render() {
         return (
             <div>
-                <h1>Indecision</h1>
-                <h2>Welcome to React JS</h2>
+                <h1>{this.props.headervalues.title}</h1>
+                <h2>{this.props.headervalues.subtitle}</h2>
             </div>
         );
     }
 }
 
 class Action extends React.Component {
+    handlePick() {
+        alert("Handle Pick alert")
+    }
     render() {
         return (
             <div>
-                <button> What Should i do?</button>
+                <button onClick={this.handlePick}> What Should i do?</button>
             </div>
         );
     }
@@ -38,21 +46,22 @@ class Options extends React.Component {
         return (
             <div>
                 <p>Your options here.</p>
-                <Option />
+                <Option option={this.props.option} />
             </div>
         );
     }
 }
 
 class Option extends React.Component {
+    handleRemoveAll() {
+        alert('Handle Remove all')
+    }
     render() {
         return (
             <div>
+                <button onClick={this.handleRemoveAll}>Remove all</button>
                 <ol>
-                    <li>one</li>
-                    <li>two</li>
-                    <li>three</li>
-                    <li>four</li>
+                    {this.props.option.map((value, index) => <li key={index} >{value}</li>)}
                 </ol>
             </div>
         );
