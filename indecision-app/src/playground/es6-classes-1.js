@@ -34,17 +34,24 @@ class Traveler extends Person {
         super(name, age);
         this.homeLocation = homeLocation
     }
+    getGreeting() {
+        let greeting = super.getGreeting()
+        if (this.homeLocation) {
+            greeting += ` I'm visiting from ${this.homeLocation}.`
+        }
+        return greeting
+    }
 }
 
 const me = new Traveler('Aswin P Das', 21, 'Kochi');
 console.log(me)
-// console.log(me.getGreeting())
+console.log(me.getGreeting())
 // console.log(me.getDescription())
 // console.log(me.hasMajor())
 
-const other = new Traveler();
+const other = new Traveler(undefined, undefined, 'Undiscloded location');
 console.log(other)
-// console.log(other.getGreeting())
+console.log(other.getGreeting())
 // console.log(other.getDescription())
 // console.log(other.hasMajor())
 

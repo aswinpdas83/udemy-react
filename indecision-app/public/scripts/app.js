@@ -79,17 +79,28 @@ var Traveler = function (_Person2) {
         return _this2;
     }
 
+    _createClass(Traveler, [{
+        key: 'getGreeting',
+        value: function getGreeting() {
+            var greeting = _get(Traveler.prototype.__proto__ || Object.getPrototypeOf(Traveler.prototype), 'getGreeting', this).call(this);
+            if (this.homeLocation) {
+                greeting += ' I\'m visiting from ' + this.homeLocation + '.';
+            }
+            return greeting;
+        }
+    }]);
+
     return Traveler;
 }(Person);
 
 var me = new Traveler('Aswin P Das', 21, 'Kochi');
 console.log(me);
-// console.log(me.getGreeting())
+console.log(me.getGreeting());
 // console.log(me.getDescription())
 // console.log(me.hasMajor())
 
-var other = new Traveler();
+var other = new Traveler(undefined, undefined, 'Undiscloded location');
 console.log(other);
-// console.log(other.getGreeting())
+console.log(other.getGreeting());
 // console.log(other.getDescription())
 // console.log(other.hasMajor())
