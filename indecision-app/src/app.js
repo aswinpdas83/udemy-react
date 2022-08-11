@@ -2,7 +2,7 @@ console.log("App.Js is Running!")
 
 // JSX -  JavaScript XML
 
-var book = {
+var app = {
     title: "Wings of fire",
     subTitle: "Wings of Fire (1999), is the autobiography of the Missile Man of India and President of India, Dr. A. P. J. Abdul Kalam.",
     options: []
@@ -11,39 +11,39 @@ const onFormSumbit = (e) => {
     e.preventDefault();
     const option = e.target.elements.options.value;
     if (option) {
-        book.options.push(option)
+        app.options.push(option)
         e.target.elements.options.value = ''
         renderFunction();
     }
 }
 
 const onRemoveAll = () => {
-    book.options = []
+    app.options = []
     renderFunction()
 }
 
 const onMakeDecision = () => {
-    const randomNum = Math.floor(Math.random() * book.options.length);
-    const option = book.options[randomNum]
+    const randomNum = Math.floor(Math.random() * app.options.length);
+    const option = app.options[randomNum]
     alert(option)
-    // option ? alert("Your option is:", option) : undefined
+    //option ? alert(`Your option is: ${option}`) : undefined
 }
-// const renderList = () => book.options.map(item => <li key={item}>{item}</li>)
+// const renderList = () => app.options.map((item, index) => <li key={item}>{item}</li>)
 
 const appRoot = document.getElementById("app");
 
 const renderFunction = () => {
-    var template = (
+    const template = (
         <div>
-            <h1>{book.title}</h1>
-            {book.subTitle && <p>{book.subTitle}</p>}
-            <p>{book.options.length > 0 ? 'Here is your options' : 'No options'}</p>
-            <p>{book.options.length}</p>
-            <button disabled={book.options.length === 0} onClick={onMakeDecision}>What should I do?</button>
+            <h1>{app.title}</h1>
+            {app.subTitle && <p>{app.subTitle}</p>}
+            <p>{app.options.length > 0 ? 'Here is your options' : 'No options'}</p>
+            <p>{app.options.length}</p>
+            <button disabled={app.options.length === 0} onClick={onMakeDecision}>What should I do?</button>
             <button onClick={onRemoveAll} >Remove All</button>
             <ol >
                 {
-                    book.options.map((item, index) => <li key={index}>{item}</li>)
+                    app.options.map((item, index) => <li key={index}>{item}</li>)
                 }
             </ol>
             <form onSubmit={onFormSumbit}>

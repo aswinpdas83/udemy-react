@@ -1,8 +1,9 @@
 'use strict';
 
-var buttonName = 'Show details';
+var visibility = false;
 
 var onClickToggle = function onClickToggle() {
+    visibility = !visibility;
     render();
 };
 
@@ -15,8 +16,18 @@ var render = function render() {
             null,
             'Visiblity Toggle'
         ),
-        React.createElement('button', { onClick: onClickToggle, value: buttonName }),
-        React.createElement('p', null)
+        React.createElement(
+            'button',
+            { onClick: onClickToggle },
+            ' ',
+            visibility ? 'Hide details' : 'Show details',
+            ' '
+        ),
+        React.createElement(
+            'p',
+            null,
+            visibility && 'hello Aswin. Welcome to react'
+        )
     );
     ReactDOM.render(tmlt, document.getElementById('app'));
 };
