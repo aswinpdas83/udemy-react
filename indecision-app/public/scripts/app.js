@@ -12,18 +12,23 @@ var book = {
 var onFormSumbit = function onFormSumbit(e) {
     e.preventDefault();
     var option = e.target.elements.options.value;
-    console.log(option);
     if (option) {
         book.options.push(option);
         e.target.elements.options.value = '';
         renderFunction();
-        console.log('form re-rendered');
     }
 };
 
 var onRemoveAll = function onRemoveAll() {
     book.options = [];
     renderFunction();
+};
+
+var onMakeDecision = function onMakeDecision() {
+    var randomNum = Math.floor(Math.random() * book.options.length);
+    var option = book.options[randomNum];
+    alert(option);
+    // option ? alert("Your option is:", option) : undefined
 };
 // const renderList = () => book.options.map(item => <li key={item}>{item}</li>)
 
@@ -55,16 +60,21 @@ var renderFunction = function renderFunction() {
         ),
         React.createElement(
             "button",
+            { disabled: book.options.length === 0, onClick: onMakeDecision },
+            "What should I do?"
+        ),
+        React.createElement(
+            "button",
             { onClick: onRemoveAll },
             "Remove All"
         ),
         React.createElement(
             "ol",
             null,
-            book.options.map(function (item) {
+            book.options.map(function (item, index) {
                 return React.createElement(
                     "li",
-                    { key: item },
+                    { key: index },
                     item
                 );
             })

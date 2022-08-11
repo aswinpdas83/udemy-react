@@ -10,18 +10,23 @@ var book = {
 const onFormSumbit = (e) => {
     e.preventDefault();
     const option = e.target.elements.options.value;
-    console.log(option)
     if (option) {
         book.options.push(option)
         e.target.elements.options.value = ''
         renderFunction();
-        console.log('form re-rendered')
     }
 }
 
 const onRemoveAll = () => {
     book.options = []
     renderFunction()
+}
+
+const onMakeDecision = () => {
+    const randomNum = Math.floor(Math.random() * book.options.length);
+    const option = book.options[randomNum]
+    alert(option)
+    // option ? alert("Your option is:", option) : undefined
 }
 // const renderList = () => book.options.map(item => <li key={item}>{item}</li>)
 
@@ -34,10 +39,11 @@ const renderFunction = () => {
             {book.subTitle && <p>{book.subTitle}</p>}
             <p>{book.options.length > 0 ? 'Here is your options' : 'No options'}</p>
             <p>{book.options.length}</p>
+            <button disabled={book.options.length === 0} onClick={onMakeDecision}>What should I do?</button>
             <button onClick={onRemoveAll} >Remove All</button>
             <ol >
                 {
-                    book.options.map(item => <li key={item}>{item}</li>)
+                    book.options.map((item, index) => <li key={index}>{item}</li>)
                 }
             </ol>
             <form onSubmit={onFormSumbit}>
