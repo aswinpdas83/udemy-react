@@ -1,34 +1,96 @@
-'use strict';
+"use strict";
 
-var visibility = false;
+console.log("App.Js is Running!");
 
-var onClickToggle = function onClickToggle() {
-    visibility = !visibility;
-    render();
+// JSX -  JavaScript XML
+
+var app = {
+    title: "Wings of fire",
+    subTitle: "Wings of Fire (1999), is the autobiography of the Missile Man of India and President of India, Dr. A. P. J. Abdul Kalam.",
+    options: []
+};
+var onFormSumbit = function onFormSumbit(e) {
+    e.preventDefault();
+    var option = e.target.elements.options.value;
+    if (option) {
+        app.options.push(option);
+        e.target.elements.options.value = '';
+        renderFunction();
+    }
 };
 
-var render = function render() {
-    var tmlt = React.createElement(
-        'div',
+var onRemoveAll = function onRemoveAll() {
+    app.options = [];
+    renderFunction();
+};
+
+var onMakeDecision = function onMakeDecision() {
+    var randomNum = Math.floor(Math.random() * app.options.length);
+    var option = app.options[randomNum];
+    alert(option);
+    //option ? alert(`Your option is: ${option}`) : undefined
+};
+// const renderList = () => app.options.map((item, index) => <li key={item}>{item}</li>)
+
+var appRoot = document.getElementById("app");
+
+var renderFunction = function renderFunction() {
+    var template = React.createElement(
+        "div",
         null,
         React.createElement(
-            'h1',
+            "h1",
             null,
-            'Visiblity Toggle'
+            app.title
+        ),
+        app.subTitle && React.createElement(
+            "p",
+            null,
+            app.subTitle
         ),
         React.createElement(
-            'button',
-            { onClick: onClickToggle },
-            ' ',
-            visibility ? 'Hide details' : 'Show details',
-            ' '
+            "p",
+            null,
+            app.options.length > 0 ? 'Here is your options' : 'No options'
         ),
         React.createElement(
-            'p',
+            "p",
             null,
-            visibility && 'hello Aswin. Welcome to react'
+            app.options.length
+        ),
+        React.createElement(
+            "button",
+            { disabled: app.options.length === 0, onClick: onMakeDecision },
+            "What should I do?"
+        ),
+        React.createElement(
+            "button",
+            { onClick: onRemoveAll },
+            "Remove All"
+        ),
+        React.createElement(
+            "ol",
+            null,
+            app.options.map(function (item, index) {
+                return React.createElement(
+                    "li",
+                    { key: index },
+                    item
+                );
+            })
+        ),
+        React.createElement(
+            "form",
+            { onSubmit: onFormSumbit },
+            React.createElement("input", { type: "text", name: "options", placeholder: "Enter the value here" }),
+            React.createElement(
+                "button",
+                null,
+                "Add options"
+            )
         )
     );
-    ReactDOM.render(tmlt, document.getElementById('app'));
+    ReactDOM.render(template, appRoot);
 };
-render();
+
+renderFunction();
