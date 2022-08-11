@@ -5,41 +5,48 @@ console.log("App.Js is Running!")
 var book = {
     title: "Wings of fire",
     subTitle: "Wings of Fire (1999), is the autobiography of the Missile Man of India and President of India, Dr. A. P. J. Abdul Kalam.",
-    options: ["one", "two"]
+    options: []
 }
-var template = (
-    <div>
-        <h1>{book.title}</h1>
-        {book.subTitle && <p>{book.subTitle}</p>}
-        <p>{book.options.length > 0 ? 'Here is your options' : 'No options'}</p>
-        <ol>
-            <li>item one</li>
-            <li>item two</li>
-        </ol>
-    </div>
-);
-var user = {
-    name: "Aswin P Das",
-    age: 18,
-    location: "Kochi, Ernakulam, Kerala"
+const onFormSumbit = (e) => {
+    e.preventDefault();
+    const option = e.target.elements.options.value;
+    console.log(option)
+    if (option) {
+        book.options.push(option)
+        e.target.elements.options.value = ''
+        renderFunction();
+        console.log('form re-rendered')
+    }
+}
 
+const onRemoveAll = () => {
+    book.options = []
+    renderFunction()
 }
-// var userName = 'Aswin P Das'
-// var userAge = 20
-// var userLocation = "Kochi, Ernakulam"
-function getLocation(location) {
-    if (location)
-        return <p>Location: {location}</p>
-}
-// var templateTwo = (
-//     <div>
-//         <h1>{user.name ? user.name.toUpperCase() : "Anonymous"}</h1>
-//         {user.age >= 18 && <p>Age: {user.age}</p>}
-//         {getLocation(user.location)}
+// const renderList = () => book.options.map(item => <li key={item}>{item}</li>)
 
-//     </div>
-// )
-//create an another template var JSX expression as templateTwo
 const appRoot = document.getElementById("app");
-ReactDOM.render(template, appRoot);
 
+const renderFunction = () => {
+    var template = (
+        <div>
+            <h1>{book.title}</h1>
+            {book.subTitle && <p>{book.subTitle}</p>}
+            <p>{book.options.length > 0 ? 'Here is your options' : 'No options'}</p>
+            <p>{book.options.length}</p>
+            <button onClick={onRemoveAll} >Remove All</button>
+            <ol >
+                {
+                    book.options.map(item => <li key={item}>{item}</li>)
+                }
+            </ol>
+            <form onSubmit={onFormSumbit}>
+                <input type="text" name="options" placeholder="Enter the value here" />
+                <button >Add options</button>
+            </form>
+        </div>
+    );
+    ReactDOM.render(template, appRoot);
+}
+
+renderFunction();
