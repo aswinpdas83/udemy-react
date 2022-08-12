@@ -3,10 +3,28 @@ class IndecisionApp extends React.Component {
 
     constructor(props) {
         super(props);
+        this.handleDeleteOptions = this.handleDeleteOptions.bind(this)
+        this.handlePick = this.handlePick.bind(this)
         this.state = {
-            options: ['option one', 'option two', 'option three']
+            options: ['option one', 'option two', 'option three', 'option four', 'option five']
         }
     }
+
+    handleDeleteOptions() {
+        this.setState(() => {
+            return {
+                options: []
+            }
+        });
+    }
+
+    handlePick() {
+        const randomNum = Math.floor(Math.random() * this.state.options.length);
+        const option = this.state.options[randomNum]
+        console.log(option)
+        alert(option)
+    }
+
     render() {
         let app = {
             title: 'Indecision App!',
@@ -16,8 +34,14 @@ class IndecisionApp extends React.Component {
         return (
             <div>
                 <Header headervalues={app} />
-                <Action hasOptions={this.state.options.length > 0} />
-                <Options option={this.state.options} />
+                <Action
+                    hasOptions={this.state.options.length > 0}
+                    handlePick={this.handlePick}
+                />
+                <Options
+                    option={this.state.options}
+                    handleDeleteOptions={this.handleDeleteOptions}
+                />
                 <AddOptions />
             </div>
         );
@@ -46,7 +70,7 @@ class Action extends React.Component {
         return (
             <div>
                 <button
-                    onClick={this.handlePick}
+                    onClick={this.props.handlePick}
                     disabled={!this.props.hasOptions}
                 >
                     What Should i do?
@@ -62,7 +86,10 @@ class Options extends React.Component {
         return (
             <div>
                 <p>Your options here.</p>
-                <Option option={this.props.option} />
+                <Option
+                    option={this.props.option}
+                    handleDeleteOptions={this.props.handleDeleteOptions}
+                />
             </div>
         );
     }
@@ -70,20 +97,20 @@ class Options extends React.Component {
 
 class Option extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.handleRemoveAll = this.handleRemoveAll.bind(this);
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.handleRemoveAll = this.handleRemoveAll.bind(this);
+    // }
 
-    handleRemoveAll() {
-        console.log(this.props.option)
-        alert(`Handle Remove all :\n ${this.props.option.map((value, index) => index + 1 + ". " + value + "\n")}`)
-    }
+    // handleRemoveAll() {
+    //     console.log(this.props.option)
+    //     alert(`Handle Remove all :\n ${this.props.option.map((value, index) => index + 1 + ". " + value + "\n")}`)
+    // }
 
     render() {
         return (
             <div>
-                <button onClick={this.handleRemoveAll}>Remove all</button>
+                <button onClick={this.props.handleDeleteOptions}>Remove all</button>
                 <ol>
                     {this.props.option.map((value, index) => <li key={index} >{value}</li>)}
                 </ol>
