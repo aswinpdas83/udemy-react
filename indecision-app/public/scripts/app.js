@@ -2,6 +2,8 @@
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -18,6 +20,7 @@ var IndecisionApp = function (_React$Component) {
 
         _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
         _this.handlePick = _this.handlePick.bind(_this);
+        _this.handleAddOption = _this.handleAddOption.bind(_this);
         _this.state = {
             options: ['option one', 'option two', 'option three', 'option four', 'option five']
         };
@@ -42,6 +45,16 @@ var IndecisionApp = function (_React$Component) {
             alert(option);
         }
     }, {
+        key: 'handleAddOption',
+        value: function handleAddOption(option) {
+            console.log(option);
+            this.setState(function (prevState) {
+                return {
+                    options: [].concat(_toConsumableArray(prevState.options), [option])
+                };
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             var app = {
@@ -61,7 +74,7 @@ var IndecisionApp = function (_React$Component) {
                     option: this.state.options,
                     handleDeleteOptions: this.handleDeleteOptions
                 }),
-                React.createElement(AddOptions, null)
+                React.createElement(AddOptions, { handleAddOption: this.handleAddOption })
             );
         }
     }]);
@@ -220,10 +233,13 @@ var Option = function (_React$Component5) {
 var AddOptions = function (_React$Component6) {
     _inherits(AddOptions, _React$Component6);
 
-    function AddOptions() {
+    function AddOptions(props) {
         _classCallCheck(this, AddOptions);
 
-        return _possibleConstructorReturn(this, (AddOptions.__proto__ || Object.getPrototypeOf(AddOptions)).apply(this, arguments));
+        var _this6 = _possibleConstructorReturn(this, (AddOptions.__proto__ || Object.getPrototypeOf(AddOptions)).call(this, props));
+
+        _this6.handleAddOption = _this6.handleAddOption.bind(_this6);
+        return _this6;
     }
 
     _createClass(AddOptions, [{
@@ -233,7 +249,7 @@ var AddOptions = function (_React$Component6) {
 
             var option = e.target.elements.option.value.trim();
             if (option) {
-                alert(option);
+                this.props.handleAddOption(option);
             }
         }
     }, {
