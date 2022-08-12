@@ -23,7 +23,8 @@ class Counter extends React.Component {
         this.setState({
             count: this.state.count > 0 ? this.state.count - 1 : 0
         })
-        // this.setState((prevState) => {
+
+        // this.setState((prevState) => {          //prefred syntax
         //     return {
         //         count: prevState.count - 1
         //     };
@@ -32,14 +33,14 @@ class Counter extends React.Component {
     }
 
     handleReset() {
-        this.setState({
-            count: 0
-        })
-        // this.setState((prevState) => {
-        //     return {
-        //         count: 0
-        //     };
-        // });
+        // this.setState({
+        //     count: 0
+        // })
+        this.setState((prevState) => { //prefered syntax
+            return {
+                count: 0
+            };
+        });
         console.log('handleReset')
     }
 

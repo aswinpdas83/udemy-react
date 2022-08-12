@@ -42,7 +42,8 @@ var Counter = function (_React$Component) {
             this.setState({
                 count: this.state.count > 0 ? this.state.count - 1 : 0
             });
-            // this.setState((prevState) => {
+
+            // this.setState((prevState) => {          //prefred syntax
             //     return {
             //         count: prevState.count - 1
             //     };
@@ -52,14 +53,15 @@ var Counter = function (_React$Component) {
     }, {
         key: 'handleReset',
         value: function handleReset() {
-            this.setState({
-                count: 0
+            // this.setState({
+            //     count: 0
+            // })
+            this.setState(function (prevState) {
+                //prefered syntax
+                return {
+                    count: 0
+                };
             });
-            // this.setState((prevState) => {
-            //     return {
-            //         count: 0
-            //     };
-            // });
             console.log('handleReset');
         }
     }, {
