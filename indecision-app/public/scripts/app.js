@@ -134,16 +134,22 @@ var Options = function (_React$Component4) {
 var Option = function (_React$Component5) {
     _inherits(Option, _React$Component5);
 
-    function Option() {
+    function Option(props) {
         _classCallCheck(this, Option);
 
-        return _possibleConstructorReturn(this, (Option.__proto__ || Object.getPrototypeOf(Option)).apply(this, arguments));
+        var _this5 = _possibleConstructorReturn(this, (Option.__proto__ || Object.getPrototypeOf(Option)).call(this, props));
+
+        _this5.handleRemoveAll = _this5.handleRemoveAll.bind(_this5);
+        return _this5;
     }
 
     _createClass(Option, [{
         key: 'handleRemoveAll',
         value: function handleRemoveAll() {
-            alert('Handle Remove all');
+            console.log(this.props.option);
+            alert('Handle Remove all :\n ' + this.props.option.map(function (value, index) {
+                return index + 1 + ". " + value + "\n";
+            }));
         }
     }, {
         key: 'render',

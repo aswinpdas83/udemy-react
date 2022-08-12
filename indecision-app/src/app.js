@@ -42,6 +42,7 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
+
     render() {
         return (
             <div>
@@ -53,8 +54,13 @@ class Options extends React.Component {
 }
 
 class Option extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+    }
     handleRemoveAll() {
-        alert('Handle Remove all')
+        console.log(this.props.option)
+        alert(`Handle Remove all :\n ${this.props.option.map((value, index) => index + 1 + ". " + value + "\n")}`)
     }
     render() {
         return (
