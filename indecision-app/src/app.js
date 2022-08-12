@@ -1,5 +1,6 @@
 
 class IndecisionApp extends React.Component {
+
     render() {
         let app = {
             title: 'Indecision App!',
@@ -18,6 +19,7 @@ class IndecisionApp extends React.Component {
 }
 
 class Header extends React.Component {
+
     render() {
         return (
             <div>
@@ -29,9 +31,11 @@ class Header extends React.Component {
 }
 
 class Action extends React.Component {
+
     handlePick() {
         alert("Handle Pick alert")
     }
+
     render() {
         return (
             <div>
@@ -54,14 +58,17 @@ class Options extends React.Component {
 }
 
 class Option extends React.Component {
+
     constructor(props) {
         super(props);
         this.handleRemoveAll = this.handleRemoveAll.bind(this);
     }
+
     handleRemoveAll() {
         console.log(this.props.option)
         alert(`Handle Remove all :\n ${this.props.option.map((value, index) => index + 1 + ". " + value + "\n")}`)
     }
+
     render() {
         return (
             <div>
