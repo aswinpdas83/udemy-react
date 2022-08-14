@@ -79,25 +79,39 @@ class Header extends React.Component {
     }
 }
 
-class Action extends React.Component {
-
-    handlePick() {
-        alert("Handle Pick alert")
-    }
-
-    render() {
-        return (
-            <div>
-                <button
-                    onClick={this.props.handlePick}
-                    disabled={!this.props.hasOptions}
-                >
-                    What Should i do?
-                </button>
-            </div>
-        );
-    }
+const Action = (props) => {
+    return (
+        <div>
+            <button
+                onClick={props.handlePick}
+                disabled={!props.hasOptions}
+            >
+                What Should i do?
+            </button>
+        </div>
+    );
 }
+
+// converts the Class based components to stateless functiobal component
+// class Action extends React.Component {
+
+//     handlePick() {
+//         alert("Handle Pick alert")
+//     }
+
+//     render() {
+//         return (
+//             <div>
+//                 <button
+//                     onClick={this.props.handlePick}
+//                     disabled={!this.props.hasOptions}
+//                 >
+//                     What Should i do?
+//                 </button>
+//             </div>
+//         );
+//     }
+// }
 
 class Options extends React.Component {
 
@@ -171,13 +185,15 @@ class AddOptions extends React.Component {
     }
 }
 
-const User = (props) => {
-    return (
-        <div>
-            <p>Name :{props.name} </p>
-            <p>Age : {props.age} </p>
-        </div>
-    );
-};
+// const User = (props) => {
+//     return (
+//         <div>
+//             <p>Name :{props.name} </p>
+//             <p>Age : {props.age} </p>
+//         </div>
+//     );
+// };
 
-ReactDOM.render(<User name='Aswin' age={21} />, document.getElementById('app'))
+// ReactDOM.render(<User name='Aswin' age={21} />, document.getElementById('app'))
+
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'))
