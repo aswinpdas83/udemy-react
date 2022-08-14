@@ -1,4 +1,5 @@
 
+
 class IndecisionApp extends React.Component {
 
     constructor(props) {
@@ -170,4 +171,13 @@ class AddOptions extends React.Component {
     }
 }
 
-ReactDOM.render(<IndecisionApp />, document.getElementById('app'))
+const User = (props) => {
+    return (
+        <div>
+            <p>Name :{props.name} </p>
+            <p>Age : {props.age} </p>
+        </div>
+    );
+};
+
+ReactDOM.render(<User name='Aswin' age={21} />, document.getElementById('app'))
