@@ -2,6 +2,7 @@
 
 class IndecisionApp extends React.Component {
 
+
     constructor(props) {
         super(props);
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this)
@@ -15,14 +16,15 @@ class IndecisionApp extends React.Component {
     handleDeleteOptions() {
         this.setState(() => {
             return {
-                options: []
+                options: new Set()
             }
         });
     }
 
     handlePick() {
-        const randomNum = Math.floor(Math.random() * this.state.options.length);
-        const option = this.state.options[randomNum];
+        const setToArrray = [...this.state.options];
+        const randomNum = Math.floor(Math.random() * setToArrray.length);
+        const option = setToArrray[randomNum];
         console.log(option);
         alert(option);
     }
@@ -31,12 +33,12 @@ class IndecisionApp extends React.Component {
         if (!option) {
             return 'Enter a valid input.'
         }
-        else if (this.state.options.indexOf(option) > -1) {
+        else if (this.state.options.has(option)) {
             return 'Value already exist.'
         }
         this.setState((prevState) => {
             return {
-                options: [...prevState.options, option]
+                options: new Set([...prevState.options, option])
             };
         });
     }
@@ -51,7 +53,7 @@ class IndecisionApp extends React.Component {
             <div>
                 <Header />
                 <Action
-                    hasOptions={this.state.options.length > 0}
+                    hasOptions={this.state.options.size > 0}
                     handlePick={this.handlePick}
                 />
                 <Options
@@ -60,14 +62,14 @@ class IndecisionApp extends React.Component {
                 />
                 <AddOptions
                     handleAddOption={this.handleAddOption}
-                    hasOptions={this.state.options.length > 0}
+                    hasOptions={this.state.options.size > 0}
                 />
             </div>
         );
     }
 }
 IndecisionApp.defaultProps = {
-    options: []
+    options: new Set()
 };
 
 const Header = (props) => {
@@ -166,7 +168,7 @@ const Option = (props) => {
         <div>
             <button onClick={props.handleDeleteOptions}>Remove all</button>
             <ol>
-                {props.option.map((value, index) => <li key={index} >{value}</li>)}
+                {[...props.option].map((value, index) => <li key={index} >{value}</li>)}
             </ol>
         </div>
     );
@@ -239,5 +241,6 @@ class AddOptions extends React.Component {
 // };
 
 // ReactDOM.render(<User name='Aswin' age={21} />, document.getElementById('app'))
+const defaultOpts = ['Default Options 1', 'Default Options 2'];
 
-ReactDOM.render(<IndecisionApp options={['Default Options 1', 'Default Options 2']} />, document.getElementById('app'))
+ReactDOM.render(<IndecisionApp options={new Set(defaultOpts)} />, document.getElementById('app'))

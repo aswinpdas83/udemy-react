@@ -32,15 +32,16 @@ var IndecisionApp = function (_React$Component) {
         value: function handleDeleteOptions() {
             this.setState(function () {
                 return {
-                    options: []
+                    options: new Set()
                 };
             });
         }
     }, {
         key: 'handlePick',
         value: function handlePick() {
-            var randomNum = Math.floor(Math.random() * this.state.options.length);
-            var option = this.state.options[randomNum];
+            var setToArrray = [].concat(_toConsumableArray(this.state.options));
+            var randomNum = Math.floor(Math.random() * setToArrray.length);
+            var option = setToArrray[randomNum];
             console.log(option);
             alert(option);
         }
@@ -49,12 +50,12 @@ var IndecisionApp = function (_React$Component) {
         value: function handleAddOption(option) {
             if (!option) {
                 return 'Enter a valid input.';
-            } else if (this.state.options.indexOf(option) > -1) {
+            } else if (this.state.options.has(option)) {
                 return 'Value already exist.';
             }
             this.setState(function (prevState) {
                 return {
-                    options: [].concat(_toConsumableArray(prevState.options), [option])
+                    options: new Set([].concat(_toConsumableArray(prevState.options), [option]))
                 };
             });
         }
@@ -71,7 +72,7 @@ var IndecisionApp = function (_React$Component) {
                 null,
                 React.createElement(Header, null),
                 React.createElement(Action, {
-                    hasOptions: this.state.options.length > 0,
+                    hasOptions: this.state.options.size > 0,
                     handlePick: this.handlePick
                 }),
                 React.createElement(Options, {
@@ -80,7 +81,7 @@ var IndecisionApp = function (_React$Component) {
                 }),
                 React.createElement(AddOptions, {
                     handleAddOption: this.handleAddOption,
-                    hasOptions: this.state.options.length > 0
+                    hasOptions: this.state.options.size > 0
                 })
             );
         }
@@ -90,7 +91,7 @@ var IndecisionApp = function (_React$Component) {
 }(React.Component);
 
 IndecisionApp.defaultProps = {
-    options: []
+    options: new Set()
 };
 
 var Header = function Header(props) {
@@ -209,7 +210,7 @@ var Option = function Option(props) {
         React.createElement(
             'ol',
             null,
-            props.option.map(function (value, index) {
+            [].concat(_toConsumableArray(props.option)).map(function (value, index) {
                 return React.createElement(
                     'li',
                     { key: index },
@@ -310,4 +311,7 @@ var AddOptions = function (_React$Component2) {
 
 // ReactDOM.render(<User name='Aswin' age={21} />, document.getElementById('app'))
 
-ReactDOM.render(React.createElement(IndecisionApp, { options: ['Default Options 1', 'Default Options 2'] }), document.getElementById('app'));
+
+var defaultOpts = ['Default Options 1', 'Default Options 2'];
+
+ReactDOM.render(React.createElement(IndecisionApp, { options: new Set(defaultOpts) }), document.getElementById('app'));
