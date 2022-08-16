@@ -5,8 +5,23 @@ class Counter extends React.Component {
         this.handleMinusOne = this.handleMinusOne.bind(this);
         this.handleReset = this.handleReset.bind(this);
         this.state = {
-            count: props.count
+            count: 0
         };
+    }
+
+    componentDidMount() {
+        const countSting = localStorage.getItem('count');
+        const count = parseInt(countSting);
+        if (!isNaN(count)) {
+            this.setState(() => ({ count }));
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.count !== this.state.count) {
+            localStorage.setItem('count', this.state.count)
+            console.log(`Data Saving in Local Storage : ${localStorage.getItem('count')}`)
+        }
     }
 
     handleAddOne() {
@@ -20,16 +35,17 @@ class Counter extends React.Component {
     }
 
     handleMinusOne() {
-        this.setState({
-            count: this.state.count > 0 ? this.state.count - 1 : 0
-        })
-
+        if (this.state.count > 0)
+            this.setState({
+                count: this.state.count > 0 ? this.state.count - 1 : 0
+            })
+        console.log('handleMinusOne')
         // this.setState((prevState) => {          //prefred syntax
         //     return {
         //         count: prevState.count - 1
         //     };
         // });
-        console.log('handleMinusOne')
+
     }
 
     handleReset() {
@@ -49,16 +65,16 @@ class Counter extends React.Component {
             <div>
                 <h1>Counter: {this.state.count}</h1>
                 <button onClick={this.handleAddOne}>+1</button>
-                <button onClick={this.handleMinusOne}>-1</button>
-                <button onClick={this.handleReset}>reset</button>
+                <button disabled={this.state.count == 0} onClick={this.handleMinusOne}>-1</button>
+                <button disabled={this.state.count == 0} onClick={this.handleReset}>reset</button>
             </div>
         );
     }
 }
 
-Counter.defaultProps = {
-    count: 0
-}
+// Counter.defaultProps = {
+//     count: 0
+// }
 ReactDOM.render(<Counter count={5} />, document.getElementById('app'))
 
 
