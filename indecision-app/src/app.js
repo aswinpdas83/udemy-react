@@ -14,6 +14,27 @@ class IndecisionApp extends React.Component {
         }
     }
 
+    componentDidMount() {
+        const json = localStorage.getItem('options');
+        const options = JSON.parse(json)
+        if (options) {
+            this.setState(() => ({ options }))
+            console.log('data feached and mounted.')
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.options.length !== this.state.options.length) {
+            const json = JSON.stringify(this.state.options)
+            localStorage.setItem('options', json)
+            console.log(`Data Saving in Local Storage : ${localStorage.getItem('options')}`)
+        }
+    }
+
+    componentWillUnmount() {
+        console.log('componentWillUnmount!')
+    }
+
     handleDeleteOptions() {
         this.setState(() => ({ options: [] }));
     }
@@ -140,7 +161,7 @@ const Options = (props) => {
         <div>
             {props.option.length > 0 ? <p>Your option{props.option.length > 1 ? 's' : undefined} here.</p> : <p>Please add an option to get started!</p>}
             <button
-                disabled={!props.option.length > 0}
+                //disabled={!props.option.length > 0}
                 onClick={props.handleDeleteOptions}>
                 Remove all
             </button>
