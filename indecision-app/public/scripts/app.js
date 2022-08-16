@@ -31,13 +31,17 @@ var IndecisionApp = function (_React$Component) {
     _createClass(IndecisionApp, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            var json = localStorage.getItem('options');
-            var options = JSON.parse(json);
-            if (options) {
-                this.setState(function () {
-                    return { options: options };
-                });
-                console.log('data feached and mounted.');
+            try {
+                var json = localStorage.getItem('options');
+                var options = JSON.parse(json);
+                if (options) {
+                    this.setState(function () {
+                        return { options: options };
+                    });
+                    console.log('data feached and mounted.');
+                }
+            } catch (e) {
+                // Do nothing.
             }
         }
     }, {
@@ -311,10 +315,12 @@ var AddOptions = function (_React$Component2) {
 
             var option = e.target.elements.option.value.trim();
             var error = this.props.handleAddOption(option);
-            e.target.elements.option.value = '';
             this.setState(function () {
                 return { error: error };
             });
+            if (!error) {
+                e.target.elements.option.value = '';
+            }
         }
     }, {
         key: 'render',
