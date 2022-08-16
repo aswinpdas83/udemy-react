@@ -15,11 +15,16 @@ class IndecisionApp extends React.Component {
     }
 
     componentDidMount() {
-        const json = localStorage.getItem('options');
-        const options = JSON.parse(json)
-        if (options) {
-            this.setState(() => ({ options }))
-            console.log('data feached and mounted.')
+        try {
+            const json = localStorage.getItem('options');
+            const options = JSON.parse(json)
+            if (options) {
+                this.setState(() => ({ options }))
+                console.log('data feached and mounted.')
+            }
+        }
+        catch (e) {
+            // Do nothing.
         }
     }
 
@@ -246,8 +251,10 @@ class AddOptions extends React.Component {
 
         const option = e.target.elements.option.value.trim();
         const error = this.props.handleAddOption(option);
-        e.target.elements.option.value = ''
         this.setState(() => ({ error }));
+        if (!error) {
+            e.target.elements.option.value = ''
+        }
     }
 
     render() {
