@@ -99,11 +99,6 @@ var IndecisionApp = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            // let app = {
-            //     title: 'Indecision App!',
-            //     subtitle: 'Welcome to the world of React JS.',
-
-            // }
             return React.createElement(
                 'div',
                 null,

@@ -68,11 +68,6 @@ class IndecisionApp extends React.Component {
     }
 
     render() {
-        // let app = {
-        //     title: 'Indecision App!',
-        //     subtitle: 'Welcome to the world of React JS.',
-
-        // }
         return (
             <div>
                 <Header />
