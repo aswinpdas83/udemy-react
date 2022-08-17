@@ -97,7 +97,7 @@ const add = (a, b) => a + b;
 /* harmony export (immutable) */ __webpack_exports__["a"] = add;
  //named export
 
-//export { square, add };//Default  export
+//export { square, add };//named export
 
 
 /***/ }),
