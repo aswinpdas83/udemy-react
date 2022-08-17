@@ -79,8 +79,9 @@ console.log('app.js running!!')
 console.log(Object(__WEBPACK_IMPORTED_MODULE_0__utils_js__["c" /* square */])(4));
 console.log(Object(__WEBPACK_IMPORTED_MODULE_0__utils_js__["a" /* add */])(2, 3));
 console.log(Object(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* default */])(100, 50));
-console.log(Object(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* isAdult */])(18));
+console.log(Object(__WEBPACK_IMPORTED_MODULE_1__person_js__["c" /* isAdult */])(18));
 console.log(Object(__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink */])(18));
+console.log(Object(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* default */])(64))
 
 
 /***/ }),
@@ -102,18 +103,19 @@ const subtract = (a, b) => a - b;
 //export { square, add, subtract as default };
 
 
-
 /***/ }),
 /* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 const isAdult = (age) => age >= 18;
-/* harmony export (immutable) */ __webpack_exports__["b"] = isAdult;
+/* harmony export (immutable) */ __webpack_exports__["c"] = isAdult;
 
 const canDrink = (age) => age >= 21;
 /* harmony export (immutable) */ __webpack_exports__["a"] = canDrink;
 
+const isSenior = (age) => age >= 65;
+/* harmony default export */ __webpack_exports__["b"] = (isSenior);
 
 
 /***/ })
