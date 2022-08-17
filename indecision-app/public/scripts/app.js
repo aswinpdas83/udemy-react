@@ -148,7 +148,7 @@ var Header = function Header(props) {
 //<h2>{props.headervalues.subtitle}</h2>
 
 Header.defaultProps = {
-    title: 'Indecision App',
+    title: 'Indecision App!',
     subtitle: 'Welcome to the world of React JS.'
 };
 
