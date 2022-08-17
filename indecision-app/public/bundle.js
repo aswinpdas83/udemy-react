@@ -88,16 +88,18 @@ console.log(Object(__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink */])
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return square; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return add; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return subtract; });
 console.log('utils.js running.');
 
 const square = (x) => x ** 2;
+/* harmony export (immutable) */ __webpack_exports__["c"] = square;
+
 const add = (a, b) => a + b;
+/* harmony export (immutable) */ __webpack_exports__["a"] = add;
+
 const subtract = (a, b) => a - b;
+/* harmony default export */ __webpack_exports__["b"] = (subtract);
 
-
+//export { square, add, subtract as default };
 
 
 
