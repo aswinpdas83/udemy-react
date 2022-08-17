@@ -1,7 +1,7 @@
 console.log('utils.js running.');
 
-const square = (x) => x ** 2;
+export const square = (x) => x ** 2;
 
-const add = (a, b) => a + b;
+export const add = (a, b) => a + b;
 
-export { square, add };//named export
+//export { square, add };//Defult  export

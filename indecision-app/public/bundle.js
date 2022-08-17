@@ -83,15 +83,17 @@ console.log(Object(__WEBPACK_IMPORTED_MODULE_0__utils_js__["a" /* add */])(2, 3)
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return square; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return add; });
 console.log('utils.js running.');
 
 const square = (x) => x ** 2;
+/* harmony export (immutable) */ __webpack_exports__["b"] = square;
+
 
 const add = (a, b) => a + b;
+/* harmony export (immutable) */ __webpack_exports__["a"] = add;
 
-//named export
+
+//export { square, add };//Defult  export
 
 
 /***/ })
