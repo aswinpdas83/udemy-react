@@ -81,7 +81,7 @@ console.log(Object(__WEBPACK_IMPORTED_MODULE_0__utils_js__["a" /* add */])(2, 3)
 console.log(Object(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* default */])(100, 50));
 console.log(Object(__WEBPACK_IMPORTED_MODULE_1__person_js__["c" /* isAdult */])(18));
 console.log(Object(__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink */])(18));
-console.log(Object(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* default */])(64))
+console.log(Object(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* default */])(64));
 
 
 /***/ }),
