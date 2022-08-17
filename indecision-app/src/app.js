@@ -1,11 +1,3 @@
-import nameAnythingIWant, { square, add } from './utils.js'
-import isSenior, { isAdult, canDrink } from './person.js'
+import validator from "validator";
 
-console.log('app.js running!!')
-
-console.log(square(4));
-console.log(add(2, 3));
-console.log(nameAnythingIWant(100, 50));
-console.log(isAdult(18));
-console.log(canDrink(18));
-console.log(isSenior(64));
+console.log(validator.isEmail('aswin@gmail.com'))
