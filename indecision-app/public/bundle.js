@@ -87,13 +87,13 @@ console.log('utils.js running.');
 
 const square = (x) => x ** 2;
 /* harmony export (immutable) */ __webpack_exports__["b"] = square;
-
+ //named export
 
 const add = (a, b) => a + b;
 /* harmony export (immutable) */ __webpack_exports__["a"] = add;
+ //named export
 
-
-//export { square, add };//Defult  export
+//export { square, add };//Default  export
 
 
 /***/ })
