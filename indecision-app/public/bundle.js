@@ -65,9 +65,34 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-console.log('app.js running!!!!!!!')
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_js__ = __webpack_require__(1);
+
+
+console.log('app.js running!!')
+
+console.log(Object(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* square */])(4));
+console.log(Object(__WEBPACK_IMPORTED_MODULE_0__utils_js__["a" /* add */])(2, 3))
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return square; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return add; });
+console.log('utils.js running.');
+
+const square = (x) => x ** 2;
+
+const add = (a, b) => a + b;
+
+//named export
+
 
 /***/ })
 /******/ ]);
