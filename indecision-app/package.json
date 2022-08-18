@@ -6,7 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "live-server public/",
-    "build": "webpack --watch"
+    "build": "webpack",
+    "dev-server": "webpack-dev-server",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "resolutions": {
+    "glob-parent": "^6.0.1"
   },
   "author": "Aswin",
   "license": "ISC",
@@ -20,13 +25,14 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "validator": "^13.7.0",
-    "webpack": "^3.1.0",
+    "webpack": "^5.74.0",
     "webpack-dev-server": "^4.10.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.18.10",
     "@babel/core": "^7.18.10",
     "@babel/preset-env": "^7.18.10",
-    "@babel/preset-react": "^7.18.6"
+    "@babel/preset-react": "^7.18.6",
+    "webpack-cli": "^4.10.0"
   }
 }
