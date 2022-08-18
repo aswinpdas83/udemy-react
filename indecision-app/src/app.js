@@ -2,5 +2,5 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 
-const template = React.createElement('p', {}, 'React testing.')
+const template = <p>Welcome to  react</p>;
 ReactDOM.render(template, document.getElementById('app'));
