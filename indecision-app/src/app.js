@@ -1,6 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import IndecisionApp from "./components/IndecisionApp"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import IndecisionApp from './components/IndecisionApp'
+
 
 ReactDOM.render(<IndecisionApp options={['Sample options 1', 'Sample options 2']} />, document.getElementById('app'));
 
@@ -9,7 +10,7 @@ ReactDOM.render(<IndecisionApp options={['Sample options 1', 'Sample options 2']
 
 class OldSyntax {
     constructor() {
-        this.name = "mike";
+        this.name = 'mike';
         this.getGreeting = this.getGreeting.bind(this);
     }
     getGreeting() {
