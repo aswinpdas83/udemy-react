@@ -3,4 +3,4 @@ import ReactDOM from 'react-dom';
 import IndecisionApp from './components/IndecisionApp'
 import './styles/styles.scss';
 
-ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
+ReactDOM.render(<IndecisionApp options={['Sample option 1', 'Sample option 2']} />, document.getElementById('app'));
