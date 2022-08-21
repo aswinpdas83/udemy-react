@@ -9,7 +9,8 @@ export default class IndecisionApp extends React.Component {
 
     state = {
         options: this.props.options,
-        selectedOption: undefined
+        selectedOption: undefined,
+        selectedOptionIndex: undefined
     };
 
     handleClearSelectedOption = () => {
@@ -30,7 +31,7 @@ export default class IndecisionApp extends React.Component {
         const randomNum = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[randomNum];
         console.log(option);
-        this.setState({ selectedOption: option })
+        this.setState({ selectedOption: option, selectedOptionIndex: randomNum + 1 })
     }
 
     handleAddOption = (option) => {
@@ -102,6 +103,7 @@ export default class IndecisionApp extends React.Component {
 
                 <OptionModal
                     selectedOption={this.state.selectedOption}
+                    selectedOptionIndex={this.state.selectedOptionIndex}
                     handleClearSelectedOption={this.handleClearSelectedOption}
                 />
             </div>
