@@ -20,7 +20,6 @@ class IndecisionApp extends React.Component {
             const options = JSON.parse(json)
             if (options) {
                 this.setState(() => ({ options }))
-                console.log('data feached and mounted.')
             }
         }
         catch (e) {
@@ -32,7 +31,7 @@ class IndecisionApp extends React.Component {
         if (prevState.options.length !== this.state.options.length) {
             const json = JSON.stringify(this.state.options)
             localStorage.setItem('options', json)
-            console.log(`Data Saving in Local Storage : ${localStorage.getItem('options')}`)
+
         }
     }
 
@@ -53,7 +52,6 @@ class IndecisionApp extends React.Component {
     handlePick() {
         const randomNum = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[randomNum];
-        console.log(option);
         alert(option);
     }
 
@@ -135,26 +133,6 @@ const Action = (props) => {
     );
 };
 
-// converts the Class based components to stateless functiobal component
-// class Action extends React.Component {
-
-//     handlePick() {
-//         alert("Handle Pick alert")
-//     }
-
-//     render() {
-//         return (
-//             <div>
-//                 <button
-//                     onClick={this.props.handlePick}
-//                     disabled={!this.props.hasOptions}
-//                 >
-//                     What Should i do?
-//                 </button>
-//             </div>
-//         );
-//     }
-// }
 
 const Options = (props) => {
     return (
@@ -177,20 +155,6 @@ const Options = (props) => {
     );
 };
 
-// class Options extends React.Component {
-
-//     render() {
-//         return (
-//             <div>
-//                 {this.props.option.length > 0 && <p>Your options here.</p>}
-//                 <Option
-//                     option={this.props.option}
-//                     handleDeleteOptions={this.props.handleDeleteOptions}
-//                 />
-//             </div>
-//         );
-//     }
-// }
 
 const Option = (props) => {
     return (
@@ -207,30 +171,6 @@ const Option = (props) => {
         </div>
     );
 };
-
-//class Option extends React.Component {
-
-// constructor(props) {
-//     super(props);
-//     this.handleRemoveAll = this.handleRemoveAll.bind(this);
-// }
-
-// handleRemoveAll() {
-//     console.log(this.props.option)
-//     alert(`Handle Remove all :\n ${this.props.option.map((value, index) => index + 1 + ". " + value + "\n")}`)
-// }
-
-//     render() {
-//         return (
-//             <div>
-//                 <button onClick={this.props.handleDeleteOptions}>Remove all</button>
-//                 <ol>
-//                     {this.props.option.map((value, index) => <li key={index} >{value}</li>)}
-//                 </ol>
-//             </div>
-//         );
-//     }
-// }
 
 class AddOptions extends React.Component {
     constructor(props) {

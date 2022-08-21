@@ -30,7 +30,6 @@ export default class IndecisionApp extends React.Component {
     handlePick = () => {
         const randomNum = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[randomNum];
-        console.log(option);
         this.setState({ selectedOption: option, selectedOptionIndex: randomNum + 1 })
     }
 
@@ -58,7 +57,6 @@ export default class IndecisionApp extends React.Component {
             const options = JSON.parse(json)
             if (options) {
                 this.setState(() => ({ options }))
-                console.log('data feached and mounted.')
             }
         }
         catch (e) {
@@ -70,12 +68,11 @@ export default class IndecisionApp extends React.Component {
         if (prevState.options.length !== this.state.options.length) {
             const json = JSON.stringify(this.state.options)
             localStorage.setItem('options', json)
-            console.log(`Data Saving in Local Storage : ${localStorage.getItem('options')}`)
         }
     }
 
     componentWillUnmount() {
-        console.log('componentWillUnmount!')
+        ('componentWillUnmount!')
     }
 
     render() {
