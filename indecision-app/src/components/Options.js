@@ -14,13 +14,16 @@ const Options = (props) => (
                 Remove all
             </button>
         </div>
-        <p className="widget__message">
-            {props.option.length > 0 ? `Your option${props.option.length > 1 ? 's' : undefined} here.` : "Please add an option to get started!"}
-        </p>
+
+
+
+        {props.option.length == 0 && <p className="widget__message">Please add an option to get started!</p>}
+
         {[...props.option].map((value, index) => (
             <Option
                 key={index}
                 option={value}
+                count={index + 1}
                 handleDeleteOption={props.handleDeleteOption}
             />
         ))}
@@ -29,3 +32,8 @@ const Options = (props) => (
 );
 
 export default Options;
+
+
+//<p className="widget__message">
+// {props.option.length > 0 ? `Your option${props.option.length > 1 ? 's' : undefined} here.` : "Please add an option to get started!"}
+// </p>
