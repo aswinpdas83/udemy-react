@@ -49,7 +49,7 @@ export default class IndecisionApp extends React.Component {
     //     this.handleDeleteOption = this.handleDeleteOption.bind(this)
     //     this.handlePick = this.handlePick.bind(this)
     //     this.handleAddOption = this.handleAddOption.bind(this)
-    // }
+    // } // using ES6 syntax no need to bind. use arrow function insted of this.
 
     componentDidMount() {
         try {
@@ -81,19 +81,25 @@ export default class IndecisionApp extends React.Component {
         return (
             <div>
                 <Header />
-                <Action
-                    hasOptions={this.state.options.length > 0}
-                    handlePick={this.handlePick}
-                />
-                <Options
-                    option={this.state.options}
-                    handleDeleteOptions={this.handleDeleteOptions}
-                    handleDeleteOption={this.handleDeleteOption}
-                />
-                <AddOptions
-                    handleAddOption={this.handleAddOption}
-                    hasOptions={this.state.options.length > 0}
-                />
+                <div className='container'>
+                    <Action
+                        hasOptions={this.state.options.length > 0}
+                        handlePick={this.handlePick}
+                    />
+                    <div className='widget'>
+                        <Options
+                            option={this.state.options}
+                            handleDeleteOptions={this.handleDeleteOptions}
+                            handleDeleteOption={this.handleDeleteOption}
+                        />
+                        <AddOptions
+                            handleAddOption={this.handleAddOption}
+                            hasOptions={this.state.options.length > 0}
+                        />
+                    </div>
+
+                </div>
+
                 <OptionModal
                     selectedOption={this.state.selectedOption}
                     handleClearSelectedOption={this.handleClearSelectedOption}

@@ -28,7 +28,7 @@ export default class AddOptions extends React.Component {
                 {this.state.error && this.props.hasOptions && <p>{this.state.error}</p>}
                 <form onSubmit={this.handleAddOption}>
                     <input type="text" name="option" required placeholder='Enter the input here...' />
-                    <button>Submit</button>
+                    <button className="button">Submit</button>
                 </form>
             </div>
         );
