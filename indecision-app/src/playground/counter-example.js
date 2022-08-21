@@ -20,7 +20,7 @@ class Counter extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         if (prevState.count !== this.state.count) {
             localStorage.setItem('count', this.state.count)
-            console.log(`Data Saving in Local Storage : ${localStorage.getItem('count')}`)
+
         }
     }
 
@@ -31,7 +31,7 @@ class Counter extends React.Component {
             };
         });
 
-        console.log('handleAddOne')
+
     }
 
     handleMinusOne() {
@@ -39,25 +39,16 @@ class Counter extends React.Component {
             this.setState({
                 count: this.state.count > 0 ? this.state.count - 1 : 0
             })
-        console.log('handleMinusOne')
-        // this.setState((prevState) => {          //prefred syntax
-        //     return {
-        //         count: prevState.count - 1
-        //     };
-        // });
 
     }
 
     handleReset() {
-        // this.setState({
-        //     count: 0
-        // })
-        this.setState((prevState) => { //prefered syntax
+
+        this.setState((prevState) => {
             return {
                 count: 0
             };
         });
-        console.log('handleReset')
     }
 
     render() {
