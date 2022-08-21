@@ -10,6 +10,12 @@
     padding: 2rem;
 }
 
+@media (min-width : $desktop-breakpoint) {
+    .big-button {
+        margin-bottom: $xl-size;
+    }
+}
+
 .big-button:disabled {
     opacity: .5;
 }
